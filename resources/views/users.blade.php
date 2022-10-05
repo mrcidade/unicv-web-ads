@@ -12,14 +12,14 @@
     <table class="table">
     <tr>
         <td>Nome</td>
-        <td>Idade</td>
-        <td>Cidade</td>
+        <td>E-mail</td>
+        <td>Usuário</td>
     </tr>
     @foreach ($usuarios as $usuario)
         <tr>
-            <td>{{ $usuario['nome'] }}</td>
-            <td>{{ $usuario['idade'] }}</td>
-            <td>{{ $usuario['cidade'] }}</td>
+            <td>{{ $usuario->nome }}</td>
+            <td>{{ $usuario->email }}</td>
+            <td>{{ $usuario->user }}</td>
         </tr>
     @endforeach
     </table>
