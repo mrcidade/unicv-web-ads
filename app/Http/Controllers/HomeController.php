@@ -17,4 +17,15 @@ class HomeController extends Controller
             'numero' => $total
         ]);
     }
+
+    public function users() {
+        $users = [
+            ['nome' => 'José da Silva', 'idade'  => 64, 'cidade' => 'Maringá'],
+            ['nome' => 'Maria Joana', 'idade' => 26, 'cidade' => 'Londrina'],
+            ['nome' => 'Ana Carolina', 'idade' => 35, 'cidade' => 'Curitiba'],
+            ['nome' => 'Ana Carolina', 'idade' => 35, 'cidade' => 'Curitiba']
+        ];
+
+        return view('users', ['usuarios' => $users]);
+    }
 }
