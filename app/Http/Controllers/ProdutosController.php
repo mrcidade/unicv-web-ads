@@ -38,6 +38,9 @@ class ProdutosController extends Controller
             'descricao'  => 'required|min:3|max:255',
             'preco'      => 'required|numeric',
             'quantidade' => 'required|numeric'
+        ], [], [
+            'descricao' => 'descrição do produto',
+            'preco' => 'preço'
         ]);
 
         if($validated->fails()) {
@@ -47,5 +50,30 @@ class ProdutosController extends Controller
         }
     }
 
-    
+    public function edit($id)
+    {
+        $produto = [
+            'id' => '1', 
+            'descricao' => 'Mouse Microsoft 2000', 
+            'preco' => '125.90',
+            'quantidade' => 35
+        ];
+
+        return view('produtos.editar', $produto);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = Validator::make($request->all(), [
+            'descricao'  => 'required|min:3|max:255',
+            'preco'      => 'required|numeric',
+            'quantidade' => 'required|numeric'
+        ]);
+
+        if($validated->fails()) {
+            return redirect('produtos/editar/'.$id)->withErrors($validated);
+        } else {
+            return redirect('produtos');
+        }
+    }
 }

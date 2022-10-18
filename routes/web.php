@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('produtos', [ProdutosController::class, 'index']);
 Route::get('produtos/novo', [ProdutosController::class, 'create']);
 Route::post('produtos/salvar', [ProdutosController::class, 'store']);
+Route::get('produtos/editar/{id}', [ProdutosController::class, 'edit']);
+Route::post('produtos/gravar/{id}', [ProdutosController::class, 'update']);
 Route::get('produtos/{id}', [ProdutosController::class, 'show']);
 
 

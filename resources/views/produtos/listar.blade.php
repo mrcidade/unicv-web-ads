@@ -23,7 +23,10 @@
             <tr>
                 <td>{{ $produto['codigo'] }}</td>
                 <td>{{ $produto['descricao'] }}</td>
-                <td><a href="/produtos/{{ $produto['codigo'] }}" class="btn btn-info">Visualizar</a></td>
+                <td>
+                  <a href="/produtos/{{ $produto['codigo'] }}" class="btn btn-info">Visualizar</a>
+                  <a href="/produtos/editar/{{ $produto['codigo'] }}" class="btn btn-warning">Editar</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
