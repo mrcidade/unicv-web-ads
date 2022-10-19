@@ -37,6 +37,12 @@ class ProdutosController extends Controller
         if($validated->fails()) {
             return redirect('produtos/novo')->withErrors($validated)->withInput();
         } else {
+            DB::table('produtos')->insert([
+                'descricao'  => $request->descricao,
+                'preco'      => $request->preco,
+                'quantidade' => $request->quantidade,
+            ]);
+
             return redirect('produtos')->with('mensagem', 'Produto cadastrado.');
         }
     }
