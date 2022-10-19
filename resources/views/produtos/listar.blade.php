@@ -25,12 +25,12 @@
         <tbody>
             @foreach ($produtos as $produto)
             <tr>
-                <td>{{ $produto['codigo'] }}</td>
-                <td>{{ $produto['descricao'] }}</td>
+                <td>{{ $produto->id }}</td>
+                <td>{{ $produto->descricao }}</td>
                 <td>
-                  <a href="/produtos/{{ $produto['codigo'] }}" class="btn btn-info">Visualizar</a>
-                  <a href="/produtos/editar/{{ $produto['codigo'] }}" class="btn btn-warning">Editar</a>
-                  <a href="/produtos/excluir/{{ $produto['codigo'] }}" class="btn btn-danger">Excluir</a>
+                  <a href="/produtos/{{ $produto->id }}" class="btn btn-info">Visualizar</a>
+                  <a href="/produtos/editar/{{ $produto->id }}" class="btn btn-warning">Editar</a>
+                  <a href="/produtos/excluir/{{ $produto->id }}" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
             @endforeach

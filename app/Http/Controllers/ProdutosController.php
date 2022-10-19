@@ -3,30 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ProdutosController extends Controller
 {
     public function index() {
-        $dados = ['produtos' => [
-                ['codigo' => '1', 'descricao' => 'Mouse Microsoft 2000', 'preco' => '125.90'],
-                ['codigo' => '2', 'descricao' => 'Teclado Razer Cyclosa', 'preco' => '189.75'],
-                ['codigo' => '3', 'descricao' => 'Headphone HyperX', 'preco' => '468.23'],
-                ['codigo' => '4', 'descricao' => 'Mousepad Gamind Speed', 'preco' => '98.62']
-            ]
-        ];
+        $dados = DB::table('produtos')->get();
 
-        return view('produtos.listar', $dados);
+        return view('produtos.listar', ['produtos' => $dados]);
     }
 
     public function show($id) {
-        $produto = [
-            'codigo' => $id,
-            'descricao' => 'Mouse Microsoft 2000',
-            'preco' => '125.90',
-            'quantidade' => 326
-        ];
-        return view('produtos.detalhes', $produto);
+        $produto = DB::table('produtos')->where('id', $id)->first();
+
+        return view('produtos.detalhes', ['produto' => $produto]);
     }
 
     public function create() {
