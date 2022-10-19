@@ -30,6 +30,7 @@
                 <td>
                   <a href="/produtos/{{ $produto['codigo'] }}" class="btn btn-info">Visualizar</a>
                   <a href="/produtos/editar/{{ $produto['codigo'] }}" class="btn btn-warning">Editar</a>
+                  <a href="/produtos/excluir/{{ $produto['codigo'] }}" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
             @endforeach

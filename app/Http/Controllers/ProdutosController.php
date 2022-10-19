@@ -76,4 +76,9 @@ class ProdutosController extends Controller
             return redirect('produtos')->with('mensagem', 'Produto alterado.');
         }
     }
+
+    public function destroy($id)
+    {
+        return redirect('produtos')->with('mensagem', 'Produto excluído.');
+    }
 }
