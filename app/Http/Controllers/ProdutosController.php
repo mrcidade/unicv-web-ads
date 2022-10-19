@@ -46,7 +46,7 @@ class ProdutosController extends Controller
         if($validated->fails()) {
             return redirect('produtos/novo')->withErrors($validated)->withInput();
         } else {
-            return redirect('produtos');
+            return redirect('produtos')->with('mensagem', 'Produto cadastrado.');
         }
     }
 
@@ -73,7 +73,7 @@ class ProdutosController extends Controller
         if($validated->fails()) {
             return redirect('produtos/editar/'.$id)->withErrors($validated);
         } else {
-            return redirect('produtos');
+            return redirect('produtos')->with('mensagem', 'Produto alterado.');
         }
     }
 }

@@ -9,6 +9,10 @@
   </head>
   <body>
     <h1>Listagem de Produtos</h1>
+    @if (session('mensagem'))
+    <div class="alert alert-success" role="alert">{{ session('mensagem') }}</div>
+    @endif
+
     <p><a href="/produtos/novo" class="btn btn-dark">Novo Produto</a></p>
     <table class="table">
         <thead>
