@@ -49,18 +49,20 @@ class ProdutosController extends Controller
 
     public function edit($id)
     {
-        $produto = [
-            'id' => '1', 
-            'descricao' => 'Mouse Microsoft 2000', 
-            'preco' => '125.90',
-            'quantidade' => 35
-        ];
-
-        return view('produtos.editar', $produto);
+        if (! DB::table('produtos')->where('id', $id)->first()) {
+            return redirect('produtos')->with('mensagem', 'Produto não encontrado.');
+        }
+        
+        $produto = DB::table('produtos')->where('id', $id)->first();
+        return view('produtos.editar', ['produto' => $produto]);
     }
 
     public function update(Request $request, $id)
     {
+        if (! DB::table('produtos')->where('id', $id)->first()) {
+            return redirect('produtos')->with('mensagem', 'Produto não encontrado.');
+        }
+
         $validated = Validator::make($request->all(), [
             'descricao'  => 'required|min:3|max:255',
             'preco'      => 'required|numeric',
@@ -70,12 +72,24 @@ class ProdutosController extends Controller
         if($validated->fails()) {
             return redirect('produtos/editar/'.$id)->withErrors($validated);
         } else {
+            $produto = [
+                'descricao'  => $request->descricao,
+                'preco'      => $request->preco,
+                'quantidade' => $request->quantidade
+            ];
+
+            DB::table('produtos')->where('id', $id)->update($produto);
             return redirect('produtos')->with('mensagem', 'Produto alterado.');
         }
     }
 
     public function destroy($id)
     {
+        if (! DB::table('produtos')->where('id', $id)->first()) {
+            return redirect('produtos')->with('mensagem', 'Produto não encontrado.');
+        }
+
+        DB::table('produtos')->where('id', $id)->delete();
         return redirect('produtos')->with('mensagem', 'Produto excluído.');
     }
 }
