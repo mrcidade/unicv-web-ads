@@ -26,21 +26,20 @@ class ProdutosController extends Controller
 
     public function store(Request $request) {
         $validated = Validator::make($request->all(), [
-            'descricao'  => 'required|min:3|max:255',
-            'preco'      => 'required|numeric',
-            'quantidade' => 'required|numeric'
-        ], [], [
-            'descricao' => 'descrição do produto',
-            'preco' => 'preço'
-        ]);
+            'Nome'  => 'required|min:3|max:255',
+            'Email'      => 'required|email',
+            'Idade' => 'required|numeric|integer',
+            'Telefone' => 'required|numeric'
+        ], []);
 
         if($validated->fails()) {
             return redirect('produtos/novo')->withErrors($validated)->withInput();
         } else {
             DB::table('produtos')->insert([
-                'descricao'  => $request->descricao,
-                'preco'      => $request->preco,
-                'quantidade' => $request->quantidade,
+                'Nome'  => $request->Nome,
+                'Email'      => $request->Email,
+                'Idade' => $request->Idade,
+                'Telefone' => $request->Telefone,
             ]);
 
             return redirect('produtos')->with('mensagem', 'Produto cadastrado.');
@@ -64,18 +63,20 @@ class ProdutosController extends Controller
         }
 
         $validated = Validator::make($request->all(), [
-            'descricao'  => 'required|min:3|max:255',
-            'preco'      => 'required|numeric',
-            'quantidade' => 'required|numeric'
+            'Nome'  => 'required|min:3|max:255',
+            'Email'      => 'required|email',
+            'Idade' => 'required|numeric|integer',
+            'Telefone' => 'required|numeric'
         ]);
 
         if($validated->fails()) {
             return redirect('produtos/editar/'.$id)->withErrors($validated);
         } else {
             $produto = [
-                'descricao'  => $request->descricao,
-                'preco'      => $request->preco,
-                'quantidade' => $request->quantidade
+                'Nome'  => $request->Nome,
+                'Email'      => $request->Email,
+                'Idade' => $request->Idade,
+                'Telefone' => $request->Telefone,
             ];
 
             DB::table('produtos')->where('id', $id)->update($produto);

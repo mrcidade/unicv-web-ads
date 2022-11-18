@@ -9,16 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        // $usuarios = DB::table('users')->select('id', 'name', 'email')->get();
-        $usuarios = Usuario::all();
-        return response()->json($usuarios, 200);
+    public function index() {
+        $usuarios = DB::table('usuarios')->get();
+
+        return view('usuarios.listar', ['usuarios' => $usuarios]);
     }
 
     /**
