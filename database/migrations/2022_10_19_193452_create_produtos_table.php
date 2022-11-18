@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('produtos', function (Blueprint $table) {
-            $table->id();
-            $table->tinyText('descricao');
-            $table->decimal('preco', 8, 2);
-            $table->float('quantidade', 8, 3);
-            $table->timestamps();
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->tinyText('Nome');
+            $table->string('Email');
+            $table->string('Idade');
+            $table->string('Telefone');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produtos');
+        Schema::dropIfExists('usuarios');
     }
 };

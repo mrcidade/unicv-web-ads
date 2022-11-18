@@ -8,25 +8,30 @@
     <script src="/bootstrap.js"></script>
   </head>
   <body>
-    <h1>Listagem de Produtos</h1>
+    <h1>Listagem de Usuarios</h1>
     @if (session('mensagem'))
     <div class="alert alert-success" role="alert">{{ session('mensagem') }}</div>
     @endif
 
-    <p><a href="/produtos/novo" class="btn btn-dark">Novo Produto</a></p>
+    <p><a href="/usuarios/novo" class="btn btn-dark">Novo Usuario</a></p>
     <table class="table">
         <thead>
             <tr>
                 <th>Código</th>
-                <th>Descrição</th>
-                <th>Opções</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Idade</th>
+                <th>Telefone</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($produtos as $produto)
+            @foreach ($usuarios as $usuario)
             <tr>
-                <td>{{ $produto->id }}</td>
-                <td>{{ $produto->descricao }}</td>
+                <td>{{ $usuario->id }}</td>
+                <td>{{ $usuario->Nome }}</td>
+                <td>{{ $usuario->Email }}</td>
+                <td>{{ $usuario->Idade }}</td>
+                <td>{{ $usuario->Telefone }}</td>
                 <td>
                   <a href="/produtos/{{ $produto->id }}" class="btn btn-info">Visualizar</a>
                   <a href="/produtos/editar/{{ $produto->id }}" class="btn btn-warning">Editar</a>
