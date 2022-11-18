@@ -8,10 +8,11 @@
     <script src="/bootstrap.js"></script>
   </head>
   <body>
-    <h1>{{ $produto->descricao }}</h1>
-    <p>Código: {{ $produto->id }}</p>
-    <p>Preço: {{ $produto->preco }}</p>
-    <p>Quantidade: {{ $produto->quantidade }}</p>
-    <p><a href="/produtos" class="btn btn-success">Voltar</a></p>
+    <p>Código: {{ $usuario->id }}</p>
+    <p>Nome: {{ $usuario->Nome }}</p>
+    <p>Email: {{ $usuario->Email }}</p>
+    <p>Idade: {{ $usuario->Idade }}</p>
+    <p>Telefone: {{ $usuario->Telefone }}</p>
+    <p><a href="/usuarios" class="btn btn-success">Voltar</a></p>
   </body>
 </html>

@@ -8,7 +8,7 @@
     <script src="/bootstrap.js"></script>
   </head>
   <body class="p-5">
-    <h1>Editar Produto</h1>
+    <h1>Editar Usuario</h1>
     @if ($errors->any())
     <ul class="alert alert-danger">
     @foreach ($errors->all() as $error)
@@ -17,19 +17,23 @@
     </ul>
     @endif
 
-    <form action="/produtos/gravar/{{ $produto->id }}" method="post" class="p-5">
+    <form action="/usuarios/gravar/{{ $usuario->id }}" method="post" class="p-5">
         @csrf
         <div class="form-group">
-            <label for="descricao">Descrição</label>
-            <input type="text" class="form-control" name="descricao" value="{{ $produto->descricao }}">
+            <label for="Nome">Nome</label>
+            <input type="text" class="form-control" name="Nome" value="{{ $usuario->Nome }}">
         </div>
         <div class="form-group">
-            <label for="preco">Preço</label>
-            <input type="number" class="form-control" name="preco" value="{{ $produto->preco }}">
+             <label for="Email">Email</label>
+            <input type="email" class="form-control" name="Email" value="{{ $usuario->Email }}">
         </div>
         <div class="form-group">
-            <label for="quantidade">Quantidade</label>
-            <input type="text" class="form-control" name="quantidade" value="{{ $produto->quantidade }}">
+            <label for="Idade">Idade</label>
+            <input type="number" class="form-control" name="Idade" value="{{ $usuario->Idade }}">
+        </div>
+        <div class="form-group">
+            <label for="Telefone">Telefone</label>
+            <input type="text" class="form-control" name="Telefone" value="{{ $usuario->Telefone }}">
         </div>
         <input type="submit" class="btn btn-success mt-5" value="Salvar">
     </form>
