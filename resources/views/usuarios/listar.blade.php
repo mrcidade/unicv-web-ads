@@ -33,9 +33,9 @@
                 <td>{{ $usuario->Idade }}</td>
                 <td>{{ $usuario->Telefone }}</td>
                 <td>
-                  <a href="/produtos/{{ $produto->id }}" class="btn btn-info">Visualizar</a>
-                  <a href="/produtos/editar/{{ $produto->id }}" class="btn btn-warning">Editar</a>
-                  <a href="/produtos/excluir/{{ $produto->id }}" class="btn btn-danger">Excluir</a>
+                <a href="/usuarios/{{ $usuario->id }}" class="btn btn-info">Visualizar</a>
+                  <a href="/usuarios/editar/{{ $usuario->id }}" class="btn btn-warning">Editar</a>
+                  <a href="/usuarios/excluir/{{ $usuario->id }}" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
             @endforeach
